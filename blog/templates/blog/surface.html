@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+surface
+{% endblock %}
+{% block content %}
+
+<form id="new_user_form">{% csrf_token %}
+    <input type="text" id="name" placeholder="Ваше Имя"/>
+    <label id=namef for="name">Имя</label>
+
+
+    </label>
+    <input type="number" id="number" placeholder="Номер телефона"/>
+    <label id=emailf for="number">Телефон</label>
+
+    <textarea id="address2" rows="2"></textarea>
+    <label id=address for="address">Адрес Доставки</label>
+    <div class="form-group" id="accept">
+  <div class="col-sm-offset-2 col-sm-10">
+   <button type="submit" class="btn btn-success">Подтвердить</button>
+  </div>
+ </div>
+</form>
+
+{% endblock %}

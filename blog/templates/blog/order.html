@@ -1,0 +1,246 @@
+
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Order
+{% endblock %}
+{% block content %}
+
+<style>
+    .price1 {
+    font-size: 30px;
+    display: block;
+    verticval-align: middle;
+    position: relative;
+    left: 400px;
+    top: 100px;
+    }
+
+.row {
+position: relative;
+right: -100px;
+display: block;
+width: 30%;
+margin-bottom: 10px;
+margin-top: 20px;
+top: 10px;
+}
+.summa {
+position: relative;
+left: 130px;
+font-size: 30px;
+}
+.GRN {
+position: relative;
+left: 140px;
+font-size: 30px;
+}
+#emailf
+{
+position: relative;
+top: -20px;
+left: -155px;
+font-size: 20px;
+margin: 30px;
+}
+#namef {
+position: relative;
+top: -20px;
+left: -110px;
+font-size: 20px;
+}
+#address {
+position: relative;
+top: -20px;
+left: -110px;
+font-size: 20px;
+}
+#address2 {
+position: relative;
+top: 60px;
+left: 70px;
+font-size: 20px;
+}
+.radio {
+position: relative;
+top: 10px;
+left: -20px;
+font-size: 20px;
+}
+#accept {
+position: relative;
+left: 400px;
+bottom: -120px;
+}
+.button.alt {
+    border: 3px solid #000;
+    font-size: 13px;
+    font-weight: normal;
+    color: #000;
+    text-transform: uppercase;
+    border-radius: 0;
+    background-color: #fff;
+    height: 50px;
+    display: inline-block;
+}
+#place_order {
+    float: right;
+}
+</style>
+
+
+
+<div class="total">
+    <h1>Сума вашей покупки: </h1><span class="summa">
+    0</span>
+    <div>
+   <form method="GET" action="/save_tag/">
+
+
+   </form>
+</div>
+</div>
+
+<div class="korzina">
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="/static/blog/source/jquery.cookie.js"></script>
+<script type="text/javascript">
+
+$(function(){
+    arr1 = $.cookie('cart');
+    if (!arr1){
+            arr1 = '[]';
+    }
+     json2 = $.parseJSON(arr1);
+     summa1 = 0;
+    $.each(json2, function( index, value ) {
+        $('.korzina').append('<div class="row"><div class="price1">'+value["price"]+'</div><div class="id" style="display:none">'+index+'</div> <img src="'+value["img"]+'"><div class="delete">X</div>');
+       summa1 = summa1 + parseInt(value['price']);
+    });
+    $('.total .summa').text(summa1);
+    $('.delete').on('click', function(){
+         parent = $(this).parent();
+         obj= parseInt($(this).closest('.row').find('.id').text());
+         arr = $.cookie('cart');
+    if (!arr){
+            arr = '[]';
+    }
+     json = $.parseJSON(arr);
+     summa =  parseInt ($('.total .summa').text());
+    $.each(json, function( index, value ) {
+       if(index==obj){
+           summa = summa - parseInt(value['price']);
+           json.splice(index,1);
+       }
+      });
+    $.cookie('cart', JSON.stringify(json), {path: '/'});
+    $('.total .summa').text(summa);
+    parent.remove();
+
+   });
+   });
+
+   </script>
+
+<form id="new_user_form">{% csrf_token %}
+
+
+
+    <div class="container-fluid"><!-- Row 1 -->
+    <div class="col-lg-4" id="userFormColumn1">
+
+
+        <div class="form-group">
+            <label for="firstName">Name</label>
+            <input name="firstName" id="firstName" class="form-control input-normal">
+            <p class="help-block">Имя</p>
+        </div>
+
+
+    </div>
+    <div class="col-lg-4" id="userFormColumn2">
+
+
+        <div class="form-group">
+            <label for="lastName">Delivery address</label>
+            <input name="lastName" id="lastName" class="form-control input-normal">
+            <p class="help-block">Адрес Доставки</p>
+        </div>
+
+
+    </div>
+    <div class="col-lg-4" id="userFormColumn2">
+
+
+
+    </div>
+</div>
+<div class="container-fluid"><!-- Row 2 -->
+    <div class="col-lg-4" id="userFormColumn1">
+
+
+
+
+
+
+
+
+
+        <div class="form-group">
+            <label for="mobile">Mobile Phone</label>
+            <input name="mobile" id="mobile" class="form-control input-normal">
+            <p class="help-block">Телефон</p>
+        </div>
+
+
+    </div>
+    <div class="col-lg-4" id="userFormColumn2">
+
+        <div class="form-group">
+            <label for="level">Delivery operator</label>
+                <select name="level" id="level" class="form-control input-normal">
+                    <option value="1">Нова Почта</item>
+                    <option value="2">Мист Експрес</item>
+                </select>
+            <p class="help-block">Доставка</p>
+        </div>
+        <div class="col-sm-offset-2 col-sm-10">
+   <button type="submit" class="btn btn-success">Подтвердить</button>
+            </div>
+        </div>
+    <input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Оформить Заказ" data-value="Заказать">
+    </div>
+    </form>
+
+    </div>
+</div>
+
+    <script type="text/javascript">
+
+
+    $(document).on('submit','#new_user_form',function(e){
+        e.preventDefault();
+        var da = "при";
+        $.ajax({
+            type:'POST',
+            url:'/user/',
+                data:{
+                    zakaz: $.cookie('cart'),
+                    name: $('#firstName').val(),
+                    delivery: $('#lastName').val(),
+                    summa: $('#mobile').val(),
+
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                },
+
+            success:function(){
+                alert( da );
+
+        }
+
+    });
+  });
+
+    </script>
+{% endblock %}
+

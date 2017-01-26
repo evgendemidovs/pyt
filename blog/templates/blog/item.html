@@ -1,0 +1,165 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+Belt
+{% endblock %}
+{% block content %}
+  <div id="products">
+
+<style>
+    #products {
+    margin-left: 16px;
+}
+.sm{
+
+
+margin-left: 49px;
+}
+
+a.button7 {
+   666666666666666666666666666666666666666666666666666666666666666666666666666  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 3px;
+  background: rgb(64,199,129);
+  box-shadow: 0 -3px rgb(53,167,110) inset;
+  transition: 0.2s;
+}
+a.button7:hover { background: rgb(53, 167, 110); }
+a.button7:active {
+  background: rgb(33,147,90);
+  box-shadow: 0 3px rgb(33,147,90) inset;
+}
+.price {
+position: relative;
+  top: -30px;
+  left: 890px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+</style>
+
+
+
+    <div class="product-foto-galery">
+
+
+
+
+                <ul class="pagination">
+                    <li><a class="fancybox" class="full" rel="group" href="{{tovar.image}}" title="Ярмарок"><img class="sm" src="{{tovar.image}}" width="100" height="100" alt="Ярмарка"></a>
+                    </li>
+                    <li><a class="fancybox" rel="group" href="{{tovar.image1}}" title="Ярмарок"><img class="sm" src="{{tovar.image1}}" width="100" height="100" alt="Ярмарка"></a>
+                    </li>
+                    <li><a class="fancybox" rel="group" href="{{tovar.image2}}" title="Ярмарок"><img class="sm" src="{{tovar.image2}}" width="100" height="100" alt="Ярмарка"></a>
+                    </li>
+                    <li><a class="fancybox" rel="group" href="{{tovar.image3}}" title="Ярмарок"><img class="sm" src="{{tovar.image3}}" width="100" height="100" alt="Ярмарка"></a>
+                    </li>
+
+                    </ul>
+
+</div>
+
+ <div id="product-content">
+<div class="tab-item" style="display: block;">
+
+
+
+<table class="shoe-features" summary="Shoe features">
+    <tbody><tr>
+        <th>Upper Material</th>
+        <td>Leather</td>
+    </tr>
+    <tr>
+        <th>Lining Material</th>
+        <td>Textile</td>
+    </tr>
+    <tr>
+        <th>Heel Height</th>
+        <td>1 inch</td>
+    </tr>
+    <tr>
+        <th>Sole Material</th>
+        <td>TR</td>
+    </tr>
+    <tr>
+        <th>Fastening Type</th>
+        <td>None</td>
+    </tr>
+    <tr>
+        <th>Removable Insole</th>
+        <td>No</td>
+    </tr>
+    <tr>
+        <th>Trims</th>
+        <td> None</td>
+    </tr>
+</tbody>
+    </table>
+                </div>
+</div>
+</div>
+
+
+
+
+      </div>
+{% load staticfiles %}
+      <!-- Add jQuery library -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="/static/blog/source/jquery.cookie.js"></script>
+<!-- Add<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> fancyBox -->
+<link rel="stylesheet" href="/static/blog/source/jquery.fancybox.css" type="text/css" type="text/css" media="screen" />
+<script type="text/javascript" src="/static/blog/source/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
+
+
+<a href="#" class="button7">Добавить в корзину</a>
+ <span class="price">
+    {{tovar.price}} Грн
+    </span>
+</span>
+<script type="text/javascript">
+$(function(){
+var arr1 = $.cookie('cart');
+        if (!arr1){
+            arr1 = '[]';
+        }
+        var json2 = $.parseJSON(arr1);
+
+var summa1 = 0;
+    $.each(json2, function( index, value ) {
+        summa1 = summa1 + parseInt(value['price']);
+    });
+    $('.cart .summa').text(summa1);
+
+    $(".button7").click(function(){
+        var arr = $.cookie('cart');
+        if (!arr){
+            arr = '[]';
+        }
+        var json = $.parseJSON(arr);
+        json.push({
+            'price':$('span.price').text(),
+            'img':$('img.sm').attr('src'),
+    });
+    $.cookie('cart', JSON.stringify(json), { path : '/' });
+    var summa = 0;
+    $.each(json, function( index, value ) {
+        summa = summa + parseInt(value['price']);
+    });
+    $('.cart .summa').text(summa);
+   });
+  });
+</script>
+<div class="cart"> В Корзине товаров на <span class="summa"> 0 </span> <br>
+<a class="order" href="{% url 'order' %}"> Оформить заказ </a></div>
+
+{% endblock %}

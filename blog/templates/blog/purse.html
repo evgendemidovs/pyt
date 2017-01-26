@@ -1,0 +1,119 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+Belt
+{% endblock %}
+{% block content %}
+<style>
+.items2 {
+display: inline-block;
+margin-top: 20px;
+margin-left: 50px;
+margin-right: 150px;
+width: 60px;
+}
+
+.items2 img {
+display: block;
+width: 200px;
+heigt: auto;
+margin: 20px;
+}
+
+
+
+#ProductContainer {
+    display: table-cell;
+    float: none;
+    position: rigth;
+    margin: 10px;
+    height: 1000px;
+    width: 400px;
+
+}
+.s-productscontainer2 {
+    float: right;
+    width: 30%;
+    margin: 0 0 8px;
+}
+.populars {
+    display: table-cell;
+    width: 30.66666%;
+    width: 30.66666%;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 4px solid #eaeaea;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    margin: 50px;
+    padding: 40px;
+}
+.product-name-header {
+    font-size: 1.25em;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+}
+#product-list {
+    margin-top: 10px;
+    float: left;
+}
+#product-list-container {
+    clear: both;
+    overflow: inherit;
+    width:1300px;
+ }
+
+.s-productscontainer2 {
+    float: right;
+    width: 100%;
+    margin: 0 0 4px;
+}
+li {
+    list-style: none;
+}
+.s-productscontainer2 li {
+    display: inline;
+    padding-left: 20px;
+    padding-right: 20px;
+    float: left;
+    width: 25%;
+           }
+</style>
+
+
+
+ <div id="product-list-container">
+<ul class="s-productscontainer2">
+
+            {% for tovar in tovars %}
+
+<li>
+
+
+
+            <a class="populars" href="/item/{{tovar.alias}}/">
+
+                <img src="{{tovar.image}}" alt="q" title="Кошельки" height="150" width="150">
+<span class="product-name-header">
+    {{tovar.price}} Грн
+</span>
+
+
+            </a>
+
+{% endfor %}
+     </li>
+    </ul>
+      </div>
+
+
+
+
+
+
+
+
+{% endblock %}
