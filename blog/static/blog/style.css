@@ -460,6 +460,9 @@ width: 50%;
 margin-bottom 10px;
 
 }
+.cart2 {
+font-size: 50px;
+}
 .row img {
 }
 
@@ -481,6 +484,7 @@ position: relative;
 bot: 20px;
 left: 350px;
 }
+
 /*********************************************************
 / When clicking on thumbs jqzoom will add the class
 / "zoomThumbActive" on the anchor selected

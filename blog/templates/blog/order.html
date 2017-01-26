@@ -107,6 +107,7 @@ bottom: -120px;
 <script type="text/javascript">
 
 $(function(){
+    newcount = 0;
     arr1 = $.cookie('cart');
     if (!arr1){
             arr1 = '[]';
@@ -119,6 +120,7 @@ $(function(){
     });
     $('.total .summa').text(summa1);
     $('.delete').on('click', function(){
+         newcount ++;
          parent = $(this).parent();
          obj= parseInt($(this).closest('.row').find('.id').text());
          arr = $.cookie('cart');
@@ -205,7 +207,7 @@ $(function(){
             <p class="help-block">Доставка</p>
         </div>
         <div class="col-sm-offset-2 col-sm-10">
-   <button type="submit" class="btn btn-success">Подтвердить</button>
+
             </div>
         </div>
     <input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Оформить Заказ" data-value="Заказать">
@@ -218,7 +220,7 @@ $(function(){
     <script type="text/javascript">
 
 
-    $(document).on('submit','#new_user_form',function(e){
+    $(document).on('submit','#place_order',function(e){
         e.preventDefault();
         var da = "при";
         $.ajax({
