@@ -107,7 +107,7 @@ bottom: -120px;
 <script type="text/javascript">
 
 $(function(){
-    newcount = 0;
+
     arr1 = $.cookie('cart');
     if (!arr1){
             arr1 = '[]';
@@ -120,7 +120,7 @@ $(function(){
     });
     $('.total .summa').text(summa1);
     $('.delete').on('click', function(){
-         newcount ++;
+
          parent = $(this).parent();
          obj= parseInt($(this).closest('.row').find('.id').text());
          arr = $.cookie('cart');

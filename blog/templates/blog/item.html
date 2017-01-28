@@ -3,7 +3,8 @@
 Belt
 {% endblock %}
 {% block content %}
-  <div id="products">
+
+<div id="products">
 
 <style>
     #products {
@@ -16,29 +17,64 @@ margin-left: 49px;
 }
 
 a.button7 {
-   666666666666666666666666666666666666666666666666666666666666666666666666666  font-weight: 700;
-  color: white;
-  text-decoration: none;
-  padding: .8em 1em calc(.8em + 3px);
-  border-radius: 3px;
-  background: rgb(64,199,129);
-  box-shadow: 0 -3px rgb(53,167,110) inset;
-  transition: 0.2s;
-}
-a.button7:hover { background: rgb(53, 167, 110); }
-a.button7:active {
-  background: rgb(33,147,90);
-  box-shadow: 0 3px rgb(33,147,90) inset;
+    border: 3px solid #000;
+    font-size: 13px;
+    font-weight: normal;
+    color: #000;
+    text-transform: uppercase;
+    border-radius: 0;
+    background-color: #fff;
+    height: 50px;
+    display: inline-block;
 }
 .price {
 position: relative;
-  top: -30px;
-  left: 890px;
+    float: right;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 30px;
   font-weight: 700;
-}
+  top: 0px;
+  left: -120px;
 
+}
+#product-content {
+    float: right;
+    width: 685px;
+    position: relative;
+}
+#product-header {
+    position: relative;
+}
+#place_order {
+    float: right;
+}
+#bp {
+position: relative;
+float: right;
+width: 285px;
+margin: 40px;
+left: 320px;
+}
+ P {
+    text-indent: 1.5em; /* Отступ первой строки */
+    text-align: justify; /* Выравнивание по ширине */
+   }
+.order { border: 3px solid #000;
+    font-size: 13px;
+    font-weight: normal;
+    color: #000;
+    text-transform: uppercase;
+    border-radius: 0;
+    background-color: #fff;
+    height: 50px;
+    width: 130px;
+    display: inline-block;
+    }
+.woocommerce-Price-currencySymbol {
+    position: relative;
+    left: 15px;
+
+}
 </style>
 
 
@@ -62,45 +98,35 @@ position: relative;
 
 </div>
 
- <div id="product-content">
-<div class="tab-item" style="display: block;">
+<div id="product-content">
+
+
+<div id="product-header">
+
+    <div class="product-name-container">
+
+        <h3 itemprop="name">
+            <span class="name">Мужской кожаный ремень, ручной роботы</span>
 
 
 
-<table class="shoe-features" summary="Shoe features">
-    <tbody><tr>
-        <th>Upper Material</th>
-        <td>Leather</td>
-    </tr>
-    <tr>
-        <th>Lining Material</th>
-        <td>Textile</td>
-    </tr>
-    <tr>
-        <th>Heel Height</th>
-        <td>1 inch</td>
-    </tr>
-    <tr>
-        <th>Sole Material</th>
-        <td>TR</td>
-    </tr>
-    <tr>
-        <th>Fastening Type</th>
-        <td>None</td>
-    </tr>
-    <tr>
-        <th>Removable Insole</th>
-        <td>No</td>
-    </tr>
-    <tr>
-        <th>Trims</th>
-        <td> None</td>
-    </tr>
-</tbody>
-    </table>
-                </div>
+
+        </h3>
+
+
+    </div>
+
 </div>
+
+
+<div id="description" itemprop="description">
+    <div id="ProductDescription_0">
+        <p>
+           Частная мастерская «Demidoff» занимается изготовлением качественных товаров из натуральной кожи. Мы изготавливаем вещи исключительно ручной работы. Ремни с натуральной кожи, толщина 3,5 мм. Край закругленный для удобства и аккуратности изделия. Окрашенные качественными натуральными красками, oтполированные пчелиным воском. Покрытые дополнительно специальным составом (финиш) для длительного использования изделия. Пряжка из прочного металла под бронзу. Классический ремень, который изготовлен на долгие годы.
+        </p>
+    </div>
 </div>
+
 
 
 
@@ -120,14 +146,17 @@ position: relative;
 	});
 </script>
 
-
+<div id="bp">
 <a href="#" class="button7">Добавить в корзину</a>
  <span class="price">
     {{tovar.price}} Грн
-    </span>
+
 </span>
+    </div>
 <script type="text/javascript">
+badge = 0;
 $(function(){
+
 var arr1 = $.cookie('cart');
         if (!arr1){
             arr1 = '[]';
@@ -141,7 +170,8 @@ var summa1 = 0;
     $('.cart .summa').text(summa1);
 
     $(".button7").click(function(){
-        var arr = $.cookie('cart');
+        badge ++;
+        var arr = $.cookie('cart')  ;
         if (!arr){
             arr = '[]';
         }
@@ -159,7 +189,9 @@ var summa1 = 0;
    });
   });
 </script>
-<div class="cart"> В Корзине товаров на <span class="summa"> 0 </span> <br>
-<a class="order" href="{% url 'order' %}"> Оформить заказ </a></div>
 
+
+<div class="cart">
+<a class="order" href="{% url 'order' %}"> Оформить заказ </a></div>
+</div>
 {% endblock %}

@@ -1,5 +1,5 @@
 .main-content {
-   margin-top: 80px;
+   margin-top: 180px;
 p {
   color: grey;
   line-height: 150%;
@@ -411,24 +411,8 @@ width: 100px;
     top: 400px;
     bottom: 400px;
    }
- a.button7 {
- position: absolute;
-   left: 899px;
-   top: 280px;
-  font-weight: 700;5
-  color: white;
-  text-decoration: none;
-  padding: .8em 1em calc(.8em + 3px);
-  border-radius: 3px;
-  background: rgb(64,199,129);
-  box-shadow: 0 -3px rgb(53,167,110) inset;
-  transition: 0.2s;
-}
-a.button7:hover { background: rgb(53, 167, 110); }
-a.button7:active {
-  background: rgb(33,147,90);
-  box-shadow: 0 3px rgb(33,147,90) inset;
-}
+
+
 .itemprice{
 position: relative;
 left: 930px;
@@ -437,18 +421,24 @@ font-size: 30px;
 margin-top: 0px;
 }
 .cart {
-background: #e5e5e5;
-font-size: 14px;
-border: 1px solid #000;
-position: fixed;
-top: 10%;
-right: 10%;
-width: 150px;
+width: 400px;
+
+font-size: 10px;
+position: relative;
+float: right;
+top: -135px;
+left:  25%;
+
 
 }
 .summa{
 display: block;
-margin: 0 auto;
+margin: 10 auto;
+position: relative;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  font-weight: 700;
 
 }
 .cart .summa {
@@ -484,7 +474,9 @@ position: relative;
 bot: 20px;
 left: 350px;
 }
-
+.cartimg {
+margin-left: 15px;
+}
 /*********************************************************
 / When clicking on thumbs jqzoom will add the class
 / "zoomThumbActive" on the anchor selected
