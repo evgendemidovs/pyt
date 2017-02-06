@@ -4,8 +4,8 @@ from django.contrib import admin
 urlpatterns = [
     # Examples:
      url(r'^user/$', 'blog.views.user', name='user'),
+     url(r'^video/$', 'blog.views.video', name='video'),
      url(r'^save_tag/$', 'blog.views.save_tag', name='tag'),
-     url(r'^interdiction/$', 'blog.views.interdiction', name='inter'),
      url(r'^$', 'blog.views.home', name='home'),
      url(r'^order/$', 'blog.views.order', name='order'),
      url(r'^about/$', 'blog.views.about', name='about'),

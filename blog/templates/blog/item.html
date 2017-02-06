@@ -75,6 +75,24 @@ left: 320px;
     left: 15px;
 
 }
+#bigb {
+color: #3d3535;
+posistion: relative;
+top: 20%;
+font-size: 350%;
+left: 10%;
+
+}
+ul.hr {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+   }
+ul.hr li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+
+
+   }
 </style>
 
 
@@ -85,13 +103,13 @@ left: 320px;
 
 
                 <ul class="pagination">
-                    <li><a class="fancybox" class="full" rel="group" href="{{tovar.image}}" title="Ярмарок"><img class="sm" src="{{tovar.image}}" width="100" height="100" alt="Ярмарка"></a>
+                    <li><a class="fancybox" class="full" rel="group" href="{{tovar.image}}" title="Demidoff"><img class="sm" src="{{tovar.image}}" width="100" height="100" alt="Demidoff"></a>
                     </li>
-                    <li><a class="fancybox" rel="group" href="{{tovar.image1}}" title="Ярмарок"><img class="sm" src="{{tovar.image1}}" width="100" height="100" alt="Ярмарка"></a>
+                    <li><a class="fancybox" rel="group" href="{{tovar.image1}}" title="Demidoff"><img class="sm" src="{{tovar.image1}}" width="100" height="100" alt="Demidoff"></a>
                     </li>
-                    <li><a class="fancybox" rel="group" href="{{tovar.image2}}" title="Ярмарок"><img class="sm" src="{{tovar.image2}}" width="100" height="100" alt="Ярмарка"></a>
+                    <li><a class="fancybox" rel="group" href="{{tovar.image2}}" title="Demidoff"><img class="sm" src="{{tovar.image2}}" width="100" height="100" alt="Demidoff"></a>
                     </li>
-                    <li><a class="fancybox" rel="group" href="{{tovar.image3}}" title="Ярмарок"><img class="sm" src="{{tovar.image3}}" width="100" height="100" alt="Ярмарка"></a>
+                    <li><a class="fancybox" rel="group" href="{{tovar.image3}}" title="Demidoff"><img class="sm" src="{{tovar.image3}}" width="100" height="100" alt="Demidoff"></a>
                     </li>
 
                     </ul>
@@ -189,7 +207,7 @@ var summa1 = 0;
    });
   });
 </script>
-
+</div>
 
 <div class="cart">
 <a class="order" href="{% url 'order' %}"> Оформить заказ </a></div>

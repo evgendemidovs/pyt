@@ -1,0 +1,57 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+Belt
+{% endblock %}
+{% block content %}
+
+<style>
+#video12 {
+  position: relative;
+  padding-bottom: 75%;
+}
+#video12 iframe {
+  position: absolute;
+  width: calc(100% - 120px);
+  height: calc(100% - 120px*3/4);
+}
+#video12 div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 110px;
+  height: 100%;
+  padding: 5px;
+  overflow-y: auto;
+}
+#video12 img {
+  width: calc(100% - (5px + 1px)*2);
+  padding: 5px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  opacity: .7;
+}
+#video12 img:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+#video12 img:focus {
+  opacity: .2;
+}
+.videos {
+margin-bottom: 100px;
+}
+.vh1 {
+position: relative;
+left: 26%;
+}
+</style>
+<div class="videos">
+
+<h1 class="vh1">Как мы делаем наши ремни</h1>
+<br>
+
+
+
+<iframe width="1060" height="715" src="https://www.youtube.com/embed/tuc_8TRzL-M" frameborder="0" allowfullscreen></iframe>
+    </div>
+{% endblock %}

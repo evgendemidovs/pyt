@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import *
 from django import forms
+from localflavor.fr.forms import FRPhoneNumberField
+from django.forms import CharField
+from django.core import validators
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=200)
@@ -34,14 +39,19 @@ class Item(models.Model):
     def __str__(self):
         return 'Good %s' % self.name
 
-
-
+def validate_even(value):
+    if value % 2 != 0:
+        raise ValidationError(
+            _('%(value)s is not an even number'),
+            params={'value': value},
+        )
 class Zakaz2(models.Model):
-    name = models.CharField(max_length=255, verbose_name='name')
+    name = models.CharField(max_length=120, verbose_name='name', validators=[validate_even])
     zakaz = models.CharField(max_length=255, verbose_name='What ordered')
     summa = models.IntegerField(default=0, verbose_name='Sum')
     date = models.DateTimeField(verbose_name="Date")
     delivery = models.CharField(max_length=255, verbose_name='delivery')
+    number = models.IntegerField(default=0, verbose_name='Number', validators=[validate_even])
 
 
 

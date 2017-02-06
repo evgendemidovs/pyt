@@ -8,7 +8,7 @@ class ItemAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
 class Zakaz2Admin(admin.ModelAdmin):
-    list_display = ('name', 'zakaz')
+    list_display = ('name', 'zakaz', 'date', 'summa', 'delivery')
 admin.site.register (Item, ItemAdmin)
 admin.site.register (Category, CategoryAdmin)
 admin.site.register (Zakaz2, Zakaz2Admin)

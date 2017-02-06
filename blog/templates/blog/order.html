@@ -13,7 +13,7 @@ Order
     verticval-align: middle;
     position: relative;
     left: 400px;
-    top: 100px;
+    top: 80px;
     }
 
 .row {
@@ -215,22 +215,23 @@ $(function(){
     </form>
 
     </div>
-</div>
+
 
     <script type="text/javascript">
 
 
-    $(document).on('submit','#place_order',function(e){
+    $(document).on('submit','#new_user_form',function(e){
         e.preventDefault();
         var da = "при";
         $.ajax({
             type:'POST',
             url:'/user/',
-                data:{
-                    zakaz: $.cookie('cart'),
-                    name: $('#firstName').val(),
-                    delivery: $('#lastName').val(),
-                    summa: $('#mobile').val(),
+            data:{
+                zakaz:$.cookie('cart'),
+                name:$('#firstName').val(),
+                delivery:$('#lastName').val(),
+                number:$('#mobile').val(),
+                summa:parseInt ($('.total .summa').text()),
 
                     csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
                 },

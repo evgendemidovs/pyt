@@ -4,6 +4,7 @@ from blog.models import *
 import random
 import string
 
+
 # Create your views here.
 def home(request):
     return render(request, 'blog/home.html')
@@ -61,8 +62,8 @@ def get_category(request, alias):
     return render(request, 'blog/belt.html',context)
 def order(request):
     return render(request, 'blog/order.html')
-def interdiction(request):
-    return render('blog/interdiction.html', locals() )
+def video(request):
+    return render(request, 'blog/video.html')
 def p01(request):
     return render(request, 'blog/purse/p01.html')
 def p02(request):
@@ -92,17 +93,21 @@ def beltb01(request):
 def P01(request):
     return render(request, 'blog/belt/podorog.html')
 def user(request):
+
     if request.method == 'POST':
+
         name = request.POST['name']
         summa = request.POST['summa']
         delivery = request.POST['delivery']
         zakaz = request.POST['zakaz']
+        number = request.POST['number']
 
         Zakaz2.objects.create(
             date = datetime.now(),
             name = name,
             delivery = delivery,
             summa = summa,
-            zakaz = zakaz
+            zakaz = zakaz,
+            number = number
         )
         return  HttpResponse('')
