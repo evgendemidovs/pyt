@@ -154,7 +154,7 @@ $(function(){
 
         <div class="form-group">
             <label for="firstName">Name</label>
-            <input name="firstName" id="firstName" class="form-control input-normal">
+            <input name="firstName" id="firstName" required="required" class="form-control input-normal">
             <p class="help-block">Имя</p>
         </div>
 
@@ -165,7 +165,7 @@ $(function(){
 
         <div class="form-group">
             <label for="lastName">Delivery address</label>
-            <input name="lastName" id="lastName" class="form-control input-normal">
+            <input name="lastName" id="lastName" required="required" class="form-control input-normal">
             <p class="help-block">Адрес Доставки</p>
         </div>
 
@@ -190,7 +190,7 @@ $(function(){
 
         <div class="form-group">
             <label for="mobile">Mobile Phone</label>
-            <input name="mobile" id="mobile" class="form-control input-normal">
+            <input name="mobile"  id="mobile" type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" required="required" data-error="Bruh, that email address is invalid" required class="form-control input-normal">
             <p class="help-block">Телефон</p>
         </div>
 
@@ -215,11 +215,17 @@ $(function(){
     </form>
 
     </div>
+<script src="validator.min.js"></script>
+
 
 
     <script type="text/javascript">
 
+$(function(){
 
+$('#new_user_form').validator();
+
+});
     $(document).on('submit','#new_user_form',function(e){
         e.preventDefault();
         var da = "при";
