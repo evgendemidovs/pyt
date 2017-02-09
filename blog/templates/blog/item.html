@@ -93,6 +93,15 @@ ul.hr li {
 
 
    }
+.summa {
+margin: 15px;
+left: 10%;
+}
+.cart
+{
+right: 20%;
+}
+
 </style>
 
 
@@ -165,6 +174,7 @@ ul.hr li {
 </script>
 
 <div id="bp">
+
 <a href="#" class="button7">Добавить в корзину</a>
  <span class="price">
     {{tovar.price}} Грн
@@ -172,34 +182,36 @@ ul.hr li {
 </span>
     </div>
 <script type="text/javascript">
-badge = 0;
+
 $(function(){
 
-var arr1 = $.cookie('cart');
+
+
+ arr1 = $.cookie('cart');
         if (!arr1){
             arr1 = '[]';
         }
-        var json2 = $.parseJSON(arr1);
+         json2 = $.parseJSON(arr1);
 
-var summa1 = 0;
+ summa1 = 0;
     $.each(json2, function( index, value ) {
         summa1 = summa1 + parseInt(value['price']);
     });
     $('.cart .summa').text(summa1);
 
     $(".button7").click(function(){
-        badge ++;
-        var arr = $.cookie('cart')  ;
+
+         arr = $.cookie('cart')  ;
         if (!arr){
             arr = '[]';
         }
-        var json = $.parseJSON(arr);
+         json = $.parseJSON(arr);
         json.push({
             'price':$('span.price').text(),
             'img':$('img.sm').attr('src'),
     });
     $.cookie('cart', JSON.stringify(json), { path : '/' });
-    var summa = 0;
+     summa = 0;
     $.each(json, function( index, value ) {
         summa = summa + parseInt(value['price']);
     });
@@ -209,7 +221,11 @@ var summa1 = 0;
 </script>
 </div>
 
+<div id='txt1'></div>
+
 <div class="cart">
-<a class="order" href="{% url 'order' %}"> Оформить заказ </a></div>
+<a href="{% url 'order' %}" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-shopping-cart"></span> Оформить заказ  </a><span class="summa"> 0 </span></div>
+
 </div>
 {% endblock %}

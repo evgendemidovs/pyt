@@ -64,8 +64,6 @@ def order(request):
     return render(request, 'blog/order.html')
 def video(request):
     return render(request, 'blog/video.html')
-def p01(request):
-    return render(request, 'blog/purse/p01.html')
 def p02(request):
     return render(request, 'blog/purse/p02.html')
 def p03(request):
@@ -76,10 +74,6 @@ def p05(request):
     return render(request, 'blog/purse/p05.html')
 def p06(request):
     return render(request, 'blog/purse/p06.html')
-def b01(request):
-    return render(request, 'blog/belt/b01.html')
-def b02(request):
-    return render(request, 'blog/belt/b02.html')
 def b03(request):
     return render(request, 'blog/belt/b03.html')
 def b04(request):
@@ -90,8 +84,8 @@ def b06(request):
     return render(request, 'blog/belt/b06.html')
 def beltb01(request):
     return render(request, 'blog/belt/b01/P1.JPG')
-def P01(request):
-    return render(request, 'blog/belt/podorog.html')
+def orderthanks(request):
+    return render(request, 'blog/interdiction.html')
 def user(request):
 
     if request.method == 'POST':

@@ -73,6 +73,9 @@ left: 400px;
 bottom: -120px;
 }
 .button.alt {
+    position: relative;
+    bottom: 15px;
+    left: 15px;
     border: 3px solid #000;
     font-size: 13px;
     font-weight: normal;
@@ -86,6 +89,13 @@ bottom: -120px;
 #place_order {
     float: right;
 }
+#bottoms {
+position: relative;
+    bottom: 40px;
+    left: -50%;
+    margin: 0px;
+    }
+
 </style>
 
 
@@ -210,20 +220,18 @@ $(function(){
 
             </div>
         </div>
-    <input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Оформить Заказ" data-value="Заказать">
     </div>
-    </form>
 
-    </div>
+
+</div>
+
+
 <script src="validator.min.js"></script>
-
-
 
     <script type="text/javascript">
 
 $(function(){
 
-$('#new_user_form').validator();
 
 });
     $(document).on('submit','#new_user_form',function(e){
@@ -243,7 +251,7 @@ $('#new_user_form').validator();
                 },
 
             success:function(){
-                alert( da );
+                location.href = "thanks/";
 
         }
 
@@ -251,5 +259,10 @@ $('#new_user_form').validator();
   });
 
     </script>
+ <div id="bottoms">
+    <input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Подтвердить  Заказ" data-value="Заказать">
+</div>
+    </form>
+
 {% endblock %}
 
