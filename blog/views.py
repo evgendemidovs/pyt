@@ -3,9 +3,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from blog.models import *
 import random
 import string
-
+from django.core.mail import EmailMessage
+from django.core.mail import send_mail
 
 # Create your views here.
+def custom_send_email(to_list, subject, message, sender="evgendemidovs@gmail.com>"):
+    msg = EmailMessage(subject, message, sender, to_list)
+    msg.content_subtype = "html"  # Main content is now text/html
+    return msg.send()
 def home(request):
     return render(request, 'blog/home.html')
 def about(request):
@@ -104,4 +109,5 @@ def user(request):
             zakaz = zakaz,
             number = number
         )
+        send_mail('Subject', 'zakaz2.name', 'evgendemidovs@gmail.com',     ['evgen_demidov@ukr.net'], fail_silently=False)
         return  HttpResponse('')

@@ -1,6 +1,6 @@
 
 {% extends 'blog/base.html' %}
-
+from django.core.mail import send_mail
 {% block title %}
 Order
 {% endblock %}
@@ -74,9 +74,7 @@ bottom: -120px;
 }
 .button.alt {
     position: relative;
-
-    bottom: -115px;
-    left: 5px;
+    left: -530px;
     border: 3px solid #000;
     font-size: 13px;
     font-weight: normal;
@@ -86,16 +84,16 @@ bottom: -120px;
     background-color: #fff;
     height: 50px;
     display: inline-block;
-    margin: 10px;
+    margin: 40px;
 }
 #place_order {
     float: right;
 }
 #bottoms {
 position: relative;
-    bottom: 40px;
-    left: -50%;
-    margin: 0px;
+    bottom: 400px;
+    left: -550px;
+    margin-bottom: 35px;
     }
 .floating-box {
     display: inline-block;
@@ -256,15 +254,16 @@ $(function(){
             success:function(){
                 location.href = "thanks/";
 
+
         }
 
     });
   });
 
     </script>
- <div id="bottoms">
+
     <input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Подтвердить  Заказ" data-value="Заказать">
-</div>
+
     </form>
 
 {% endblock %}
