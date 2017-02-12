@@ -422,13 +422,13 @@ font-size: 30px;
 margin-top: 0px;
 }
 .cart {
-width: 400px;
+width: 300px;
 
 font-size: 10px;
 position: relative;
 float: right;
-top: -135px;
-left:  25%;
+top: 235px;
+left: 150px;
 
 
 }
