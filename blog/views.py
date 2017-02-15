@@ -109,5 +109,5 @@ def user(request):
             zakaz = zakaz,
             number = number
         )
-        send_mail('Subject', 'zakaz2.name', 'evgendemidovs@gmail.com',     ['evgen_demidov@ukr.net'], fail_silently=False)
+        send_mail('Subject', 'request.POST.name', 'evgendemidovs@gmail.com',     ['evgen_demidov@ukr.net'], fail_silently=False)
         return  HttpResponse('')
