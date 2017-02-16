@@ -1,0 +1,449 @@
+-- MySQL dump 10.13  Distrib 5.5.54, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: mysite_db
+-- ------------------------------------------------------
+-- Server version	5.5.54-0ubuntu0.14.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `auth_group`
+--
+
+DROP TABLE IF EXISTS `auth_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(80) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group`
+--
+
+LOCK TABLES `auth_group` WRITE;
+/*!40000 ALTER TABLE `auth_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_group_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_group_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_group_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `group_id` (`group_id`,`permission_id`),
+  KEY `auth_group__permission_id_1f49ccbbdc69d2fc_fk_auth_permission_id` (`permission_id`),
+  CONSTRAINT `auth_group_permission_group_id_689710a9a73b7457_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
+  CONSTRAINT `auth_group__permission_id_1f49ccbbdc69d2fc_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group_permissions`
+--
+
+LOCK TABLES `auth_group_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_group_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_permission`
+--
+
+DROP TABLE IF EXISTS `auth_permission`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `content_type_id` int(11) NOT NULL,
+  `codename` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `content_type_id` (`content_type_id`,`codename`),
+  CONSTRAINT `auth__content_type_id_508cf46651277a81_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_permission`
+--
+
+LOCK TABLES `auth_permission` WRITE;
+/*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can add permission',2,'add_permission'),(5,'Can change permission',2,'change_permission'),(6,'Can delete permission',2,'delete_permission'),(7,'Can add group',3,'add_group'),(8,'Can change group',3,'change_group'),(9,'Can delete group',3,'delete_group'),(10,'Can add user',4,'add_user'),(11,'Can change user',4,'change_user'),(12,'Can delete user',4,'delete_user'),(13,'Can add content type',5,'add_contenttype'),(14,'Can change content type',5,'change_contenttype'),(15,'Can delete content type',5,'delete_contenttype'),(16,'Can add session',6,'add_session'),(17,'Can change session',6,'change_session'),(18,'Can delete session',6,'delete_session'),(19,'Can add article',7,'add_article'),(20,'Can change article',7,'change_article'),(21,'Can delete article',7,'delete_article'),(22,'Can add Category',8,'add_category'),(23,'Can change Category',8,'change_category'),(24,'Can delete Category',8,'delete_category'),(25,'Can add Good',9,'add_item'),(26,'Can change Good',9,'change_item'),(27,'Can delete Good',9,'delete_item'),(34,'Can add person',12,'add_person'),(35,'Can change person',12,'change_person'),(36,'Can delete person',12,'delete_person'),(37,'Can add Order',13,'add_zakaz2'),(38,'Can change Order',13,'change_zakaz2'),(39,'Can delete Order',13,'delete_zakaz2');
+/*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user`
+--
+
+DROP TABLE IF EXISTS `auth_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `email` varchar(254) DEFAULT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user`
+--
+
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$20000$7ZnVKYJ7LY1M$Qmh5yeixOnpT454nDJyQSU8VlYgkmoB99OlK9o612cs=','2017-02-09 20:44:44',1,'jeka','','','jeka@ukr.net',1,1,'2016-09-28 18:17:52');
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_groups`
+--
+
+DROP TABLE IF EXISTS `auth_user_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`,`group_id`),
+  KEY `auth_user_groups_group_id_33ac548dcf5f8e37_fk_auth_group_id` (`group_id`),
+  CONSTRAINT `auth_user_groups_group_id_33ac548dcf5f8e37_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
+  CONSTRAINT `auth_user_groups_user_id_4b5ed4ffdb8fd9b0_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_groups`
+--
+
+LOCK TABLES `auth_user_groups` WRITE;
+/*!40000 ALTER TABLE `auth_user_groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_user_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_user_user_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user_user_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`,`permission_id`),
+  KEY `auth_user_u_permission_id_384b62483d7071f0_fk_auth_permission_id` (`permission_id`),
+  CONSTRAINT `auth_user_user_permissi_user_id_7f0938558328534a_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `auth_user_u_permission_id_384b62483d7071f0_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_user_permissions`
+--
+
+LOCK TABLES `auth_user_user_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_user_user_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_user_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `blog_article`
+--
+
+DROP TABLE IF EXISTS `blog_article`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_article` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `text` longtext NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `blog_aritcle_user_id_76eaf77eaf1cfe9a_fk_auth_user_id` (`user_id`),
+  CONSTRAINT `blog_aritcle_user_id_76eaf77eaf1cfe9a_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_article`
+--
+
+LOCK TABLES `blog_article` WRITE;
+/*!40000 ALTER TABLE `blog_article` DISABLE KEYS */;
+/*!40000 ALTER TABLE `blog_article` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `blog_category`
+--
+
+DROP TABLE IF EXISTS `blog_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `alias` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `blog_category_724874d1` (`alias`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_category`
+--
+
+LOCK TABLES `blog_category` WRITE;
+/*!40000 ALTER TABLE `blog_category` DISABLE KEYS */;
+INSERT INTO `blog_category` VALUES (1,'obuv','obuv'),(3,'koselki','koselki'),(4,'belt','belt'),(5,'purse','purse');
+/*!40000 ALTER TABLE `blog_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `blog_item`
+--
+
+DROP TABLE IF EXISTS `blog_item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `price` int(11) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `alias` varchar(50) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `image2` varchar(255) DEFAULT NULL,
+  `image1` varchar(255) NOT NULL,
+  `image3` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `blog_item_category_id_1eba6935dd5a9bc1_fk_blog_category_id` (`category_id`),
+  KEY `blog_item_724874d1` (`alias`),
+  CONSTRAINT `blog_item_category_id_1eba6935dd5a9bc1_fk_blog_category_id` FOREIGN KEY (`category_id`) REFERENCES `blog_category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_item`
+--
+
+LOCK TABLES `blog_item` WRITE;
+/*!40000 ALTER TABLE `blog_item` DISABLE KEYS */;
+INSERT INTO `blog_item` VALUES (9,400,'http://127.0.0.1/1001a/1.JPG','b1',4,'http://127.0.0.1/1001a/3.JPG','http://127.0.0.1/1001a/2.JPG','http://127.0.0.1/1001a/4.JPG','2017-02-04 13:53:10.362900+00:00'),(10,400,'http://127.0.0.1/1001b/1.JPG','b2',4,'http://127.0.0.1/1001b/3.JPG','http://127.0.0.1/1001b/2.JPG','http://127.0.0.1/1001b/4.JPG','2017-02-04 13:53:10.362900+00:00'),(11,400,'http://127.0.0.1/1001c/1.JPG','b3',4,'http://127.0.0.1/1001c/3.JPG','http://127.0.0.1/1001c/2.JPG','http://127.0.0.1/1001c/4.JPG','2017-02-04 13:53:10.362900+00:00'),(12,400,'http://127.0.0.1/1002a/1.JPG','b4',4,'http://127.0.0.1/1001c/3.JPG','http://127.0.0.1/1001c/2.JPG','http://127.0.0.1/1001c/4.JPG','2017-02-04 13:53:10.362900+00:00'),(13,400,'http://127.0.0.1/1002b/1.JPG','b5',4,'http://127.0.0.1/1002b/3.JPG','http://127.0.0.1/1002b/2.JPG','http://127.0.0.1/1002b/4.JPG','2017-02-04 13:53:10.362900+00:00'),(14,400,'http://127.0.0.1/1002c/1.JPG','b6',4,'http://127.0.0.1/1002c/3.JPG','http://127.0.0.1/1002c/2.JPG','http://127.0.0.1/1002c/4.JPG','2017-02-04 13:53:10.362900+00:00');
+/*!40000 ALTER TABLE `blog_item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `blog_person`
+--
+
+DROP TABLE IF EXISTS `blog_person`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_person` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_person`
+--
+
+LOCK TABLES `blog_person` WRITE;
+/*!40000 ALTER TABLE `blog_person` DISABLE KEYS */;
+/*!40000 ALTER TABLE `blog_person` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `blog_zakaz2`
+--
+
+DROP TABLE IF EXISTS `blog_zakaz2`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_zakaz2` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zakaz` varchar(255) NOT NULL,
+  `summa` int(11) NOT NULL,
+  `delivery` varchar(255) NOT NULL,
+  `date` datetime DEFAULT NULL,
+  `number` int(11) NOT NULL,
+  `name` varchar(120) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_zakaz2`
+--
+
+LOCK TABLES `blog_zakaz2` WRITE;
+/*!40000 ALTER TABLE `blog_zakaz2` DISABLE KEYS */;
+INSERT INTO `blog_zakaz2` VALUES (1,'agaga',350,'arawr','2017-01-24 18:34:10',0,'2017-02-04 13:55:45.669830+00:00'),(2,'',1314,'adsa','2017-01-24 18:34:10',0,'2017-02-04 13:55:45.669830+00:00'),(3,'[{\"price\":\"\\n    111 Грн\\n    \",\"img\":\"http://i2.rozetka.ua/goods/1521749/apple_iphone_5s_16gb_space_gray_cpo_images_1521749958.jpg\"}]',14141,'dada','2017-01-24 18:34:10',0,'2017-02-04 13:55:45.669830+00:00'),(4,'[{\"price\":\"\\n    111 Грн\\n    \",\"img\":\"http://i2.rozetka.ua/goods/1521749/apple_iphone_5s_16gb_space_gray_cpo_images_1521749958.jpg\"}]',14141,'dadarqrq',NULL,0,'2017-02-04 13:55:45.669830+00:00'),(5,'[{\"price\":\"\\n    111 Грн\\n    \",\"img\":\"http://i2.rozetka.ua/goods/1521749/apple_iphone_5s_16gb_space_gray_cpo_images_1521749958.jpg\"}]',14141,'dadarqrq','2017-01-24 18:41:01',0,'2017-02-04 13:55:45.669830+00:00'),(6,'[{\"price\":\"\\n    111 Грн\\n    \",\"img\":\"http://i2.rozetka.ua/goods/1521749/apple_iphone_5s_16gb_space_gray_cpo_images_1521749958.jpg\"}]',3141,'fwfw','2017-01-26 17:11:59',0,'2017-02-04 13:55:45.669830+00:00'),(7,'[{\"price\":\"\\n    111 Грн\\n    \",\"img\":\"http://i2.rozetka.ua/goods/1521749/apple_iphone_5s_16gb_space_gray_cpo_images_1521749958.jpg\"}]',1234451551,'afwafw','2017-01-26 18:22:32',0,'2017-02-04 13:55:45.669830+00:00'),(8,'[{\"price\":\"\\n    111 Грн\\n    \",\"img\":\"http://i2.rozetka.ua/goods/1521749/apple_iphone_5s_16gb_space_gray_cpo_images_1521749958.jpg\"}]',1234451551,'afwafw','2017-01-26 18:22:56',0,'2017-02-04 13:55:45.669830+00:00'),(9,'[{\"price\":\"\\n    111 Грн\\n    \",\"img\":\"http://i2.rozetka.ua/goods/1521749/apple_iphone_5s_16gb_space_gray_cpo_images_1521749958.jpg\"}]',2147483647,'afwafw','2017-01-26 18:23:10',0,'2017-02-04 13:55:45.669830+00:00'),(10,'[{\"price\":\"\\n    111 Грн\\n    \",\"img\":\"http://i2.rozetka.ua/goods/1521749/apple_iphone_5s_16gb_space_gray_cpo_images_1521749958.jpg\"}]',123,'afwafw','2017-01-26 18:23:14',0,'2017-02-04 13:55:45.669830+00:00'),(11,'афафа',500,'Г.Канев','2017-01-29 08:53:03',0,'2017-02-04 13:55:45.669830+00:00'),(12,'',0,'',NULL,0,'2017-02-04 13:55:45.669830+00:00'),(13,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001c/1.JPG\"}]',1314141,'fafsfsa','2017-02-03 16:33:06',0,'2017-02-04 13:55:45.669830+00:00'),(14,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001c/1.JPG\"}]',425252,'fafsfsagagags','2017-02-03 16:38:43',0,'2017-02-04 13:55:45.669830+00:00'),(15,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001c/1.JPG\"}]',1200,'fsafafsa','2017-02-03 16:39:06',0,'2017-02-04 13:55:45.669830+00:00'),(16,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001c/1.JPG\"}]',1200,'wewew','2017-02-03 17:13:26',314145151,'2017-02-04 13:55:45.669830+00:00'),(17,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001c/1.JPG\"}]',1200,'adwdwad','2017-02-03 17:25:20',4141515,'2017-02-04 13:55:45.669830+00:00'),(18,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001c/1.JPG\"}]',1200,'adwdwad','2017-02-03 17:25:34',4141515,'2017-02-04 13:55:45.669830+00:00'),(19,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001c/1.JPG\"}]',1200,'adwdwad','2017-02-03 17:36:32',2147483647,'2017-02-04 13:55:45.669830+00:00'),(20,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001c/1.JPG\"}]',1200,'adwdwad','2017-02-03 17:36:42',2147483647,'2017-02-04 13:55:45.669830+00:00'),(21,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001c/1.JPG\"}]',1200,'sfsafa','2017-02-03 17:51:22',4141451,'2017-02-04 13:55:45.669830+00:00'),(22,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001c/1.JPG\"}]',1200,'sfsafa','2017-02-03 17:51:25',4141451,'2017-02-04 13:55:45.669830+00:00'),(23,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fafaf','2017-02-04 07:18:56',4141414,'2017-02-04 13:55:45.669830+00:00'),(24,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fafaf','2017-02-04 07:19:03',4141414,'2017-02-04 13:55:45.669830+00:00'),(25,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'','2017-02-04 07:19:06',4141414,'2017-02-04 13:55:45.669830+00:00'),(26,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fsfs','2017-02-04 07:19:40',1,'2017-02-04 13:55:45.669830+00:00'),(27,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'ffafafs','2017-02-04 11:07:14',3131,'2017-02-04 13:55:45.669830+00:00'),(28,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'ffafafs','2017-02-04 11:07:20',3131,'2017-02-04 13:55:45.669830+00:00'),(29,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fafa','2017-02-04 13:56:02',3131,'afafa'),(30,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fsafa','2017-02-04 14:13:18',14141,'dafa'),(31,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fsafa','2017-02-04 14:13:22',14141,'d'),(32,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fsafa','2017-02-04 14:13:27',14141,'dd'),(33,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fsafa','2017-02-04 14:14:56',14141,'dd'),(34,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fsafa','2017-02-04 14:15:00',1,'dd'),(35,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fsafa','2017-02-04 14:15:49',1,'dd'),(36,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'eqeq','2017-02-04 14:15:54',1,'eq'),(37,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fafafa','2017-02-04 14:37:40',113131,'afafa'),(38,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fafafa','2017-02-04 14:38:16',31314,'afafa'),(39,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'dasdsa','2017-02-04 17:51:58',1414515151,'dadsa'),(40,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'dasdas','2017-02-04 17:52:13',3131,'dadas'),(41,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'dasdas','2017-02-04 17:52:17',31313131,'dadas'),(42,'[]',0,'rewerew','2017-02-04 17:53:18',313141,'rqrqe'),(43,'[]',0,'fdfef','2017-02-04 17:53:52',313141,'dfsf'),(44,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afafa','2017-02-05 08:35:29',131414,'fafafa'),(45,'[]',0,'afafawew','2017-02-05 08:35:45',1314143131,'fafafa'),(46,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'sda','2017-02-05 08:36:20',41414,'dada'),(47,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'sda','2017-02-05 08:36:24',41414,'dada'),(48,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'rwre','2017-02-05 08:37:55',2311,'fwewer'),(49,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'afaf','2017-02-05 16:55:12',13131,'dafaf'),(50,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',800,'dada','2017-02-06 17:41:02',3131,'dada'),(51,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'3131','2017-02-06 17:43:39',3131,'3131'),(52,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'dada','2017-02-06 17:47:04',31414,'Na'),(53,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'dada','2017-02-06 17:48:04',21,'Na'),(54,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'dada','2017-02-06 17:54:50',31414,'Namead'),(55,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'31','2017-02-06 17:55:12',31314,'dad'),(56,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'31','2017-02-06 17:56:32',1,'dada'),(57,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'d','2017-02-06 17:56:57',1,'fafa'),(58,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'dfafa','2017-02-06 17:57:38',1,'fafa'),(59,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'','2017-02-06 17:57:42',1,'fafa'),(60,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'dad','2017-02-06 18:07:50',1314,'qeq'),(61,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'dada','2017-02-06 18:09:38',3131,'313'),(62,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'dada','2017-02-06 18:09:42',3131,'dadafa'),(63,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'dada','2017-02-06 18:09:50',1,'dadafa'),(64,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-08 16:01:32',131,'fafa'),(65,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'dada','2017-02-08 16:02:09',1414,'afafada131'),(66,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'dada','2017-02-08 16:06:34',41141515,'dada'),(67,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afaf','2017-02-08 16:25:20',414141,'daaf'),(68,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afaf','2017-02-08 20:12:26',1313,'ddad'),(69,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afaf','2017-02-08 20:12:27',1313,'ddad'),(70,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afaf','2017-02-08 20:12:50',1313,'ddad'),(71,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fsfs','2017-02-08 20:12:57',4225,'ffs'),(72,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:36:29',3141,'dafa'),(73,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:36:30',3141,'dafa'),(74,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:36:30',3141,'dafa'),(75,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afafa','2017-02-09 16:36:49',4141,'fafa'),(76,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afafa','2017-02-09 16:36:55',4141,'fafa'),(77,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afafa','2017-02-09 16:36:56',4141,'fafa'),(78,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:37:01',4141,'fafa'),(79,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afafa','2017-02-09 16:37:26',4141,'fafa'),(80,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:41:20',4141,'fafa'),(81,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:45:29',3131,'fafa'),(82,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:45:30',3131,'fafa'),(83,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:45:31',3131,'fafa'),(84,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:45:45',3131,'fafa'),(85,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:47:34',141,'fafa'),(86,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'faf','2017-02-09 16:48:05',4141,'faf'),(87,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'faf','2017-02-09 16:48:05',4141,'faf'),(88,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'faf','2017-02-09 16:48:06',4141,'faf'),(89,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fwf','2017-02-09 16:50:09',4141,'fafw'),(90,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fwf','2017-02-09 16:50:10',4141,'fafw'),(91,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 16:50:42',4141,'fafa'),(92,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'faf','2017-02-09 17:04:43',4141,'fafa'),(93,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 17:09:46',141,'afa'),(94,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'dada','2017-02-09 17:10:07',3141,'dad'),(95,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 17:12:45',4141,'fafa'),(96,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'faf','2017-02-09 17:19:01',4141,'fafa'),(97,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'faf','2017-02-09 17:19:02',4141,'fafa'),(98,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 17:27:21',4141,'fafa'),(99,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'faf','2017-02-09 17:31:02',414141,'fafa'),(100,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'faf','2017-02-09 17:31:04',414141,'fafa'),(101,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 17:31:31',4141,'fafa'),(102,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 17:31:34',4141,'fafa'),(103,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 17:31:35',4141,'fafa'),(104,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafa','2017-02-09 17:31:57',4141,'fafa'),(105,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafaffaa','2017-02-09 17:32:15',41414141,'fafafa'),(106,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafaffaa','2017-02-09 17:32:16',41414141,'fafafa'),(107,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafaffaa','2017-02-09 17:32:35',41414141,'fafafa'),(108,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafaffaa','2017-02-09 17:32:36',41414141,'fafafa'),(109,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafaffaa','2017-02-09 17:32:37',41414141,'fafafa'),(110,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafaf','2017-02-09 17:32:44',31414,'fafa'),(111,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafaf','2017-02-09 17:33:27',31414,'fafa'),(112,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafaf','2017-02-09 17:33:44',31414,'fafa'),(113,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afafa','2017-02-09 17:33:58',141,'faf'),(114,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafaf','2017-02-09 17:43:09',4141,'fafafa'),(115,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'fafaf','2017-02-09 17:43:25',4141,'fafafa'),(116,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'Г.Канев Улица Героев Днепра 31-129','2017-02-09 17:45:42',414141,'Женя'),(117,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',800,'faf','2017-02-09 17:54:04',441,'fafa'),(118,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',800,'faf','2017-02-09 18:03:41',3141,'fafa'),(119,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',800,'fafa','2017-02-09 18:10:29',4141,'fafa'),(120,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',800,'dad','2017-02-09 18:11:07',4141,'dada'),(121,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',800,'afaf','2017-02-09 18:29:06',4141,'faf'),(122,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1002c/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1002c/1.JPG\"}]',800,'fafa','2017-02-09 19:10:33',34141,'afa'),(123,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/',3200,'fafa','2017-02-09 19:46:45',4141,'fafa'),(124,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/',2000,'fafa','2017-02-09 20:44:34',4141,'fafa'),(125,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'вфв','2017-02-11 08:56:09',3141551,'вфвф'),(126,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'afa','2017-02-12 08:03:31',141,'faf'),(127,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'qr','2017-02-12 08:15:21',3131,'rqr'),(128,'[]',0,'afaf','2017-02-12 09:10:54',3144,'rfa'),(129,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1002c/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1002c/1.JPG\"}]',800,'faf','2017-02-12 16:19:04',3131,'fafa'),(130,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fafa','2017-02-12 16:38:08',4141,'fafa'),(131,'[]',0,'faf','2017-02-12 16:53:13',3131,'faf'),(132,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',400,'dad','2017-02-12 16:55:43',3131,'dada'),(133,'[]',0,'fafa','2017-02-12 17:24:21',4141,'fafa'),(134,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1002c/1.JPG\"}]',400,'fafafa','2017-02-12 17:24:34',4141,'afa'),(135,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fafa','2017-02-12 17:28:25',4141,'fafa'),(136,'[]',0,'faf','2017-02-12 18:53:04',141,'fafa'),(137,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'fsfs','2017-02-12 18:54:54',4141,'sfs'),(138,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'fafa','2017-02-12 19:04:13',4141,'fafa'),(139,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'fafa','2017-02-12 19:04:14',4141,'fafa'),(140,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'fafa','2017-02-12 19:06:03',4141,'fafa'),(141,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'faf','2017-02-12 19:12:16',4141,'fafa'),(142,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'faf','2017-02-12 19:12:22',4141,'fafa'),(143,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'fafa','2017-02-12 19:12:45',4141,'fafa'),(144,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'fafa','2017-02-12 19:16:37',4141,'fafa'),(145,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'faf','2017-02-12 19:16:56',4141,'fafa'),(146,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'faf','2017-02-12 19:17:08',4141,'fafa'),(147,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1002c/1.JPG\"}]',800,'afafa','2017-02-12 19:18:37',4141,'faf'),(148,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1002c/1.JPG\"}]',800,'fafa','2017-02-12 19:19:12',4141,'fa'),(149,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1002c/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',1200,'faf','2017-02-12 19:21:47',4141,'fafa'),(150,'[]',0,'faf','2017-02-14 16:08:29',4141,'fafa'),(151,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001b/1.JPG\"}]',800,'fafa','2017-02-14 16:08:49',4141,'fafa'),(152,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',800,'fafa','2017-02-15 16:52:08',4141,'fafa'),(153,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',1200,'faf','2017-02-15 16:52:33',141441,'fafa'),(154,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',1200,'faf','2017-02-15 16:52:35',141441,'fafa'),(155,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',1200,'fafa','2017-02-15 16:57:49',4141,'fafa'),(156,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',400,'fafa','2017-02-15 17:03:26',3,'fafa'),(157,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',1200,'afaffa','2017-02-15 17:04:01',4141,'faf'),(158,'[{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"},{\"price\":\"\\n    400 Грн\\n\\n\",\"img\":\"http://127.0.0.1/1001a/1.JPG\"}]',1200,'gagaga','2017-02-15 17:48:15',4141,'aga');
+/*!40000 ALTER TABLE `blog_zakaz2` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_admin_log`
+--
+
+DROP TABLE IF EXISTS `django_admin_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_admin_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `action_time` datetime NOT NULL,
+  `object_id` longtext,
+  `object_repr` varchar(200) NOT NULL,
+  `action_flag` smallint(5) unsigned NOT NULL,
+  `change_message` longtext NOT NULL,
+  `content_type_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `djang_content_type_id_697914295151027a_fk_django_content_type_id` (`content_type_id`),
+  KEY `django_admin_log_user_id_52fdd58701c5f563_fk_auth_user_id` (`user_id`),
+  CONSTRAINT `django_admin_log_user_id_52fdd58701c5f563_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `djang_content_type_id_697914295151027a_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+LOCK TABLES `django_admin_log` WRITE;
+/*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
+INSERT INTO `django_admin_log` VALUES (1,'2016-09-28 18:18:33','1','Catogory obuv',1,'',8,1),(2,'2016-09-28 18:19:46','1','Good bo1',1,'',9,1),(3,'2016-12-10 12:36:21','2','Catogory obuv',1,'',8,1),(4,'2016-12-10 12:36:34','3','Catogory koselki',1,'',8,1),(5,'2016-12-10 12:39:06','2','Good odoad',1,'',9,1),(6,'2016-12-10 12:39:36','2','Catogory obuv',3,'',8,1),(7,'2016-12-11 09:36:56','3','Good afwr',1,'',9,1),(8,'2016-12-11 09:38:08','3','Good afwr',2,'Changed image, image1, image2 and image3.',9,1),(55,'2017-01-22 08:27:09','4','Catogory belt',1,'',8,1),(56,'2017-01-22 08:32:11','4','Good rqr',1,'',9,1),(57,'2017-01-22 08:46:21','4','Good rqr',2,'Changed image, image1, image2 and image3.',9,1),(58,'2017-01-22 08:49:47','5','Good rqrrr',1,'',9,1),(59,'2017-01-22 11:01:29','5','Catogory purse',1,'',8,1),(60,'2017-01-22 11:01:57','6','Good ajfihiw',1,'',9,1),(61,'2017-01-24 16:42:31','1','Order on 350',1,'',13,1),(62,'2017-01-28 16:47:23','7','Good blt',1,'',9,1),(63,'2017-01-28 16:48:19','7','Good blt',2,'Changed category.',9,1),(64,'2017-01-28 16:50:31','7','Good blt',2,'Changed category.',9,1),(65,'2017-01-28 16:52:11','7','Good blt',2,'Changed image, image1, image2 and image3.',9,1),(66,'2017-01-28 16:52:36','6','Good ajfihiw',2,'Changed image, image1, image2, image3 and category.',9,1),(67,'2017-01-28 17:00:18','8','Good qerqtq',1,'',9,1),(68,'2017-01-29 08:53:14','11','Order on 500',1,'',13,1),(69,'2017-01-31 17:05:29','8','Good qerqtq',3,'',9,1),(70,'2017-01-31 17:05:29','7','Good blt',3,'',9,1),(71,'2017-01-31 17:05:29','6','Good ajfihiw',3,'',9,1),(72,'2017-01-31 17:05:29','5','Good rqrrr',3,'',9,1),(73,'2017-01-31 17:05:29','4','Good rqr',3,'',9,1),(74,'2017-01-31 17:05:29','3','Good afwr',3,'',9,1),(75,'2017-01-31 17:05:29','2','Good odoad',3,'',9,1),(76,'2017-01-31 17:05:29','1','Good bo1',3,'',9,1),(77,'2017-01-31 17:32:37','9','Good b1',1,'',9,1),(78,'2017-01-31 17:33:33','10','Good b2',1,'',9,1),(79,'2017-01-31 17:34:10','11','Good b3',1,'',9,1),(80,'2017-01-31 17:43:19','12','Good b4',1,'',9,1),(81,'2017-01-31 17:43:48','13','Good b5',1,'',9,1),(82,'2017-01-31 17:44:14','14','Good b6',1,'',9,1);
+/*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_content_type`
+--
+
+DROP TABLE IF EXISTS `django_content_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_content_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app_label` varchar(100) NOT NULL,
+  `model` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `django_content_type_app_label_45f3b1d93ec8c61c_uniq` (`app_label`,`model`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_content_type`
+--
+
+LOCK TABLES `django_content_type` WRITE;
+/*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
+INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(3,'auth','group'),(2,'auth','permission'),(4,'auth','user'),(7,'blog','article'),(8,'blog','category'),(9,'blog','item'),(12,'blog','person'),(13,'blog','zakaz2'),(5,'contenttypes','contenttype'),(6,'sessions','session');
+/*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_migrations`
+--
+
+DROP TABLE IF EXISTS `django_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_migrations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `applied` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_migrations`
+--
+
+LOCK TABLES `django_migrations` WRITE;
+/*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2016-09-28 18:11:14'),(2,'auth','0001_initial','2016-09-28 18:11:14'),(3,'admin','0001_initial','2016-09-28 18:11:14'),(4,'contenttypes','0002_remove_content_type_name','2016-09-28 18:11:14'),(5,'auth','0002_alter_permission_name_max_length','2016-09-28 18:11:14'),(6,'auth','0003_alter_user_email_max_length','2016-09-28 18:11:14'),(7,'auth','0004_alter_user_username_opts','2016-09-28 18:11:14'),(8,'auth','0005_alter_user_last_login_null','2016-09-28 18:11:14'),(9,'auth','0006_require_contenttypes_0002','2016-09-28 18:11:14'),(10,'blog','0001_initial','2016-09-28 18:11:14'),(11,'blog','0002_auto_20160727_1025','2016-09-28 18:11:14'),(12,'blog','0003_category_item','2016-09-28 18:11:14'),(13,'blog','0004_auto_20160824_1214','2016-09-28 18:11:14'),(14,'blog','0005_auto_20160827_0944','2016-09-28 18:11:15'),(15,'blog','0006_auto_20160827_1049','2016-09-28 18:11:15'),(16,'blog','0007_auto_20160830_0941','2016-09-28 18:11:15'),(17,'blog','0008_auto_20160831_1642','2016-09-28 18:11:15'),(18,'blog','0009_auto_20160831_1645','2016-09-28 18:11:15'),(19,'blog','0010_auto_20160831_1658','2016-09-28 18:11:15'),(20,'blog','0011_item_images','2016-09-28 18:11:15'),(21,'blog','0012_auto_20160831_1700','2016-09-28 18:11:15'),(22,'sessions','0001_initial','2016-09-28 18:11:15'),(23,'blog','0013_zakaz','2016-11-08 13:33:19'),(24,'blog','0014_auto_20161118_1702','2016-11-18 17:02:09'),(25,'blog','0015_auto_20161211_1007','2016-12-11 10:07:23'),(26,'blog','0016_auto_20161211_1119','2016-12-11 11:19:49'),(27,'blog','0017_auto_20161211_1249','2016-12-11 12:49:11'),(28,'blog','0018_auto_20161211_1411','2016-12-11 14:11:07'),(29,'blog','0019_auto_20161211_1420','2016-12-11 14:20:39'),(30,'blog','0020_auto_20170102_1238','2017-01-02 12:38:59'),(31,'blog','0021_auto_20170102_1259','2017-01-02 12:59:58'),(32,'blog','0022_auto_20170102_1312','2017-01-02 13:12:31'),(33,'blog','0023_auto_20170102_1404','2017-01-02 14:04:43'),(34,'blog','0024_auto_20170104_1751','2017-01-04 17:52:01'),(35,'blog','0002_person','2017-01-24 16:38:08'),(36,'blog','0002_zakaz2_date','2017-01-24 18:37:46'),(37,'blog','0003_auto_20170124_2034','2017-01-24 18:37:46'),(38,'blog','0004_auto_20170124_2037','2017-01-24 18:37:46'),(39,'blog','0005_zakaz2_number','2017-02-03 17:13:11'),(40,'blog','0006_auto_20170203_1950','2017-02-03 17:51:02'),(41,'blog','0007_auto_20170204_1548','2017-02-04 13:53:20'),(42,'blog','0008_remove_item_name','2017-02-04 13:53:20'),(43,'blog','0009_auto_20170204_1553','2017-02-04 13:53:20'),(44,'blog','0010_zakaz2_name','2017-02-04 13:55:49');
+/*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_session`
+--
+
+DROP TABLE IF EXISTS `django_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_session` (
+  `session_key` varchar(40) NOT NULL,
+  `session_data` longtext NOT NULL,
+  `expire_date` datetime NOT NULL,
+  PRIMARY KEY (`session_key`),
+  KEY `django_session_de54fa62` (`expire_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_session`
+--
+
+LOCK TABLES `django_session` WRITE;
+/*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
+INSERT INTO `django_session` VALUES ('c6jm5k6rtdh7vfomwj1u2gru9mv3wgmd','MTM3MTZiNWMwZTA4ZDQ1OGViYWY1ZDI0M2VkYzQwYzgxNTE3YTI0NDp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMjg4MGQ2OTdhMzFmMDVlNGQzYjkxNWZkNTIwMDkzNTdkYzg2NTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2016-11-22 13:43:04'),('d0mqi6fnlykxcrey6tsc4ev8q602q26p','MTM3MTZiNWMwZTA4ZDQ1OGViYWY1ZDI0M2VkYzQwYzgxNTE3YTI0NDp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMjg4MGQ2OTdhMzFmMDVlNGQzYjkxNWZkNTIwMDkzNTdkYzg2NTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2016-12-24 12:35:51'),('e6do18842xce5c42xlxd8gqkzpxljgni','MTM3MTZiNWMwZTA4ZDQ1OGViYWY1ZDI0M2VkYzQwYzgxNTE3YTI0NDp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMjg4MGQ2OTdhMzFmMDVlNGQzYjkxNWZkNTIwMDkzNTdkYzg2NTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2016-12-25 12:36:52'),('h9meom8ithwf27v0wbeksb2qsljhc9yi','MTM3MTZiNWMwZTA4ZDQ1OGViYWY1ZDI0M2VkYzQwYzgxNTE3YTI0NDp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMjg4MGQ2OTdhMzFmMDVlNGQzYjkxNWZkNTIwMDkzNTdkYzg2NTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-02-17 16:11:26'),('ilh7dmc85xx5wm05fircv871bedld21u','MTM3MTZiNWMwZTA4ZDQ1OGViYWY1ZDI0M2VkYzQwYzgxNTE3YTI0NDp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMjg4MGQ2OTdhMzFmMDVlNGQzYjkxNWZkNTIwMDkzNTdkYzg2NTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2016-10-12 18:18:13'),('iubgtj9lcwmqr4awf4ezd3esq1p0yjjv','MTM3MTZiNWMwZTA4ZDQ1OGViYWY1ZDI0M2VkYzQwYzgxNTE3YTI0NDp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMjg4MGQ2OTdhMzFmMDVlNGQzYjkxNWZkNTIwMDkzNTdkYzg2NTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-02-02 15:54:29'),('la2dzic7owzfzskdhtlggxwsv3xaigd3','MTM3MTZiNWMwZTA4ZDQ1OGViYWY1ZDI0M2VkYzQwYzgxNTE3YTI0NDp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMjg4MGQ2OTdhMzFmMDVlNGQzYjkxNWZkNTIwMDkzNTdkYzg2NTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-02-02 16:00:09'),('lfflepuew0tqkz9gu1k5ef8l8dgn8nsy','MTM3MTZiNWMwZTA4ZDQ1OGViYWY1ZDI0M2VkYzQwYzgxNTE3YTI0NDp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMjg4MGQ2OTdhMzFmMDVlNGQzYjkxNWZkNTIwMDkzNTdkYzg2NTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-01-16 12:34:40'),('ncxukdnyh223ffj92xlg05t0rk6i2km2','MTM3MTZiNWMwZTA4ZDQ1OGViYWY1ZDI0M2VkYzQwYzgxNTE3YTI0NDp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMjg4MGQ2OTdhMzFmMDVlNGQzYjkxNWZkNTIwMDkzNTdkYzg2NTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-02-20 18:08:06'),('qqpzzuj657bubd42i8xq5fkkydlsdeli','MTM3MTZiNWMwZTA4ZDQ1OGViYWY1ZDI0M2VkYzQwYzgxNTE3YTI0NDp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMjg4MGQ2OTdhMzFmMDVlNGQzYjkxNWZkNTIwMDkzNTdkYzg2NTUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-02-23 20:44:44');
+/*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-02-16 20:32:57
