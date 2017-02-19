@@ -1,0 +1,133 @@
+*** Starting uWSGI 2.0.14 (64bit) on [Sun Feb 19 18:50:29 2017] ***
+compiled with version: 4.8.2 on 19 February 2017 10:12:52
+os: Linux-3.13.0-24-generic #46-Ubuntu SMP Thu Apr 10 19:11:08 UTC 2014
+nodename: server36.demidoff.us.to
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/jeka
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15949
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address mysite.sock fd 3
+Python version: 2.7.6 (default, Mar 22 2014, 23:03:41)  [GCC 4.8.2]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x17331a0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 1537120 bytes (1501 KB) for 20 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x17331a0 pid: 4400 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 4400, cores: 1)
+spawned uWSGI worker 2 (pid: 4403, cores: 1)
+spawned uWSGI worker 3 (pid: 4404, cores: 1)
+spawned uWSGI worker 4 (pid: 4405, cores: 1)
+spawned uWSGI worker 5 (pid: 4406, cores: 1)
+spawned uWSGI worker 6 (pid: 4407, cores: 1)
+spawned uWSGI worker 7 (pid: 4408, cores: 1)
+spawned uWSGI worker 8 (pid: 4409, cores: 1)
+spawned uWSGI worker 9 (pid: 4410, cores: 1)
+spawned uWSGI worker 10 (pid: 4411, cores: 1)
+spawned uWSGI worker 11 (pid: 4412, cores: 1)
+spawned uWSGI worker 12 (pid: 4413, cores: 1)
+spawned uWSGI worker 13 (pid: 4414, cores: 1)
+spawned uWSGI worker 14 (pid: 4415, cores: 1)
+spawned uWSGI worker 15 (pid: 4416, cores: 1)
+spawned uWSGI worker 16 (pid: 4417, cores: 1)
+spawned uWSGI worker 17 (pid: 4418, cores: 1)
+spawned uWSGI worker 18 (pid: 4419, cores: 1)
+spawned uWSGI worker 19 (pid: 4420, cores: 1)
+spawned uWSGI worker 20 (pid: 4421, cores: 1)
+[pid: 4412|app: 0|req: 1/1] 37.139.178.138 () {42 vars in 1259 bytes} [Sun Feb 19 18:50:44 2017] GET / => generated 4823 bytes in 42 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 1/2] 37.139.178.138 () {42 vars in 1213 bytes} [Sun Feb 19 18:50:44 2017] GET /favicon.ico => generated 56257 bytes in 139 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 1/3] 37.139.178.138 () {44 vars in 1297 bytes} [Sun Feb 19 18:50:51 2017] GET / => generated 4823 bytes in 46 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 2/4] 37.139.178.138 () {42 vars in 1213 bytes} [Sun Feb 19 18:50:51 2017] GET /favicon.ico => generated 56257 bytes in 79 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 2/5] 37.139.178.138 () {44 vars in 1307 bytes} [Sun Feb 19 18:50:52 2017] GET /belt/ => generated 12791 bytes in 47 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 3/6] 37.139.178.138 () {42 vars in 1218 bytes} [Sun Feb 19 18:50:52 2017] GET /favicon.ico => generated 56272 bytes in 74 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 3/7] 37.139.178.138 () {44 vars in 1326 bytes} [Sun Feb 19 18:51:00 2017] GET /item/belt22/ => generated 10472 bytes in 11 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 4/8] 37.139.178.138 () {42 vars in 1225 bytes} [Sun Feb 19 18:51:01 2017] GET /favicon.ico => generated 56293 bytes in 67 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 4/9] 37.139.178.138 () {44 vars in 1319 bytes} [Sun Feb 19 18:51:03 2017] GET /belt/ => generated 12791 bytes in 22 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 5/10] 37.139.178.138 () {42 vars in 1218 bytes} [Sun Feb 19 18:51:04 2017] GET /favicon.ico => generated 56272 bytes in 73 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 5/11] 37.139.178.138 () {44 vars in 1324 bytes} [Sun Feb 19 18:51:04 2017] GET /item/belt2/ => generated 10472 bytes in 7 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 6/12] 37.139.178.138 () {42 vars in 1224 bytes} [Sun Feb 19 18:51:04 2017] GET /favicon.ico => generated 56290 bytes in 82 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 6/13] 37.139.178.138 () {44 vars in 1318 bytes} [Sun Feb 19 18:51:09 2017] GET /belt/ => generated 12791 bytes in 15 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 7/14] 37.139.178.138 () {42 vars in 1218 bytes} [Sun Feb 19 18:51:09 2017] GET /favicon.ico => generated 56272 bytes in 75 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 7/15] 37.139.178.138 () {44 vars in 1324 bytes} [Sun Feb 19 18:51:10 2017] GET /item/belt3/ => generated 10472 bytes in 10 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 8/16] 37.139.178.138 () {42 vars in 1224 bytes} [Sun Feb 19 18:51:10 2017] GET /favicon.ico => generated 56290 bytes in 86 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 8/17] 37.139.178.138 () {44 vars in 1318 bytes} [Sun Feb 19 18:51:14 2017] GET /belt/ => generated 12791 bytes in 17 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 9/18] 37.139.178.138 () {42 vars in 1218 bytes} [Sun Feb 19 18:51:14 2017] GET /favicon.ico => generated 56272 bytes in 78 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 9/19] 37.139.178.138 () {44 vars in 1312 bytes} [Sun Feb 19 18:51:23 2017] GET /belt/ => generated 12791 bytes in 16 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 4421|app: 0|req: 10/20] 37.139.178.138 () {42 vars in 1218 bytes} [Sun Feb 19 18:51:23 2017] GET /favicon.ico => generated 56272 bytes in 84 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 10/21] 37.139.178.138 () {44 vars in 1314 bytes} [Sun Feb 19 18:51:25 2017] GET /purse/ => generated 56650 bytes in 83 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 11/22] 37.139.178.138 () {42 vars in 1219 bytes} [Sun Feb 19 18:51:26 2017] GET /favicon.ico => generated 56275 bytes in 64 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 11/23] 37.139.178.138 () {42 vars in 1218 bytes} [Sun Feb 19 18:51:27 2017] GET /favicon.ico => generated 56272 bytes in 98 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 12/24] 37.139.178.138 () {44 vars in 1312 bytes} [Sun Feb 19 18:51:29 2017] GET /belt/ => generated 12791 bytes in 25 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 4419|app: 0|req: 12/25] 37.139.178.138 () {42 vars in 1218 bytes} [Sun Feb 19 18:51:29 2017] GET /favicon.ico => generated 56272 bytes in 83 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 13/26] 37.139.178.138 () {44 vars in 1324 bytes} [Sun Feb 19 18:51:30 2017] GET /item/belt2/ => generated 10472 bytes in 8 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 13/27] 37.139.178.138 () {42 vars in 1224 bytes} [Sun Feb 19 18:51:31 2017] GET /favicon.ico => generated 56290 bytes in 62 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 14/28] 37.139.178.138 () {44 vars in 1320 bytes} [Sun Feb 19 18:51:41 2017] GET /order/ => generated 9236 bytes in 9 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 14/29] 37.139.178.138 () {42 vars in 1241 bytes} [Sun Feb 19 18:51:41 2017] GET /order/validator.min.js => generated 56411 bytes in 80 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 15/30] 37.139.178.138 () {42 vars in 1241 bytes} [Sun Feb 19 18:51:41 2017] GET /order/validator.min.js => generated 56411 bytes in 63 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 15/31] 37.139.178.138 () {42 vars in 1219 bytes} [Sun Feb 19 18:51:41 2017] GET /favicon.ico => generated 56275 bytes in 61 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 16/32] 37.139.178.138 () {46 vars in 1194 bytes} [Sun Feb 19 18:51:47 2017] GET /order/ => generated 9236 bytes in 4 msecs (HTTP/1.1 200) 4 headers in 224 bytes (2 switches on core 0)
+[pid: 4420|app: 0|req: 1/33] 37.139.178.138 () {42 vars in 1084 bytes} [Sun Feb 19 18:51:47 2017] GET /order/validator.min.js => generated 55469 bytes in 175 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 17/34] 37.139.178.138 () {46 vars in 1115 bytes} [Sun Feb 19 18:51:47 2017] GET /favicon.ico => generated 55788 bytes in 72 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 16/35] 37.139.178.138 () {46 vars in 1037 bytes} [Sun Feb 19 18:51:50 2017] GET /order/ => generated 9236 bytes in 6 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 18/36] 37.139.178.138 () {42 vars in 927 bytes} [Sun Feb 19 18:51:50 2017] GET /order/validator.min.js => generated 54527 bytes in 75 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 17/37] 37.139.178.138 () {46 vars in 958 bytes} [Sun Feb 19 18:51:50 2017] GET /favicon.ico => generated 54846 bytes in 57 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 19/38] 37.139.178.138 () {46 vars in 883 bytes} [Sun Feb 19 18:51:51 2017] GET /order/ => generated 9236 bytes in 4 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 4420|app: 0|req: 2/39] 37.139.178.138 () {42 vars in 773 bytes} [Sun Feb 19 18:51:51 2017] GET /order/validator.min.js => generated 53603 bytes in 83 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 20/40] 37.139.178.138 () {46 vars in 883 bytes} [Sun Feb 19 18:51:51 2017] GET /order/ => generated 9236 bytes in 11 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+Sun Feb 19 18:51:52 2017 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 296] during GET /favicon.ico (37.139.178.138)
+IOError: write error
+[pid: 4419|app: 0|req: 18/41] 37.139.178.138 () {46 vars in 804 bytes} [Sun Feb 19 18:51:51 2017] GET /favicon.ico => generated 0 bytes in 100 msecs (HTTP/1.1 500) 2 headers in 0 bytes (0 switches on core 0)
+[pid: 4421|app: 0|req: 21/42] 37.139.178.138 () {42 vars in 773 bytes} [Sun Feb 19 18:51:51 2017] GET /order/validator.min.js => generated 53603 bytes in 87 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 19/43] 37.139.178.138 () {46 vars in 804 bytes} [Sun Feb 19 18:51:52 2017] GET /favicon.ico => generated 53922 bytes in 73 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 22/44] 37.139.178.138 () {46 vars in 883 bytes} [Sun Feb 19 18:51:55 2017] GET /order/ => generated 9236 bytes in 6 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 4420|app: 0|req: 3/45] 37.139.178.138 () {42 vars in 773 bytes} [Sun Feb 19 18:51:55 2017] GET /order/validator.min.js => generated 53603 bytes in 77 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 23/46] 37.139.178.138 () {46 vars in 883 bytes} [Sun Feb 19 18:51:55 2017] GET /order/ => generated 9236 bytes in 5 msecs (HTTP/1.1 200) 4 headers in 224 bytes (2 switches on core 0)
+[pid: 4419|app: 0|req: 20/47] 37.139.178.138 () {42 vars in 773 bytes} [Sun Feb 19 18:51:55 2017] GET /order/validator.min.js => generated 53603 bytes in 69 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 24/48] 37.139.178.138 () {46 vars in 883 bytes} [Sun Feb 19 18:51:55 2017] GET /order/ => generated 9236 bytes in 10 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+Sun Feb 19 18:51:56 2017 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 296] during GET /favicon.ico (37.139.178.138)
+IOError: write error
+[pid: 4420|app: 0|req: 4/49] 37.139.178.138 () {46 vars in 804 bytes} [Sun Feb 19 18:51:55 2017] GET /favicon.ico => generated 0 bytes in 116 msecs (HTTP/1.1 500) 2 headers in 0 bytes (0 switches on core 0)
+[pid: 4419|app: 0|req: 21/50] 37.139.178.138 () {46 vars in 883 bytes} [Sun Feb 19 18:51:56 2017] GET /order/ => generated 9236 bytes in 6 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+Sun Feb 19 18:51:56 2017 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 296] during GET /order/validator.min.js (37.139.178.138)
+IOError: write error
+[pid: 4421|app: 0|req: 25/51] 37.139.178.138 () {42 vars in 773 bytes} [Sun Feb 19 18:51:56 2017] GET /order/validator.min.js => generated 0 bytes in 124 msecs (HTTP/1.1 500) 2 headers in 0 bytes (0 switches on core 0)
+[pid: 4419|app: 0|req: 22/52] 37.139.178.138 () {42 vars in 773 bytes} [Sun Feb 19 18:51:56 2017] GET /order/validator.min.js => generated 53603 bytes in 81 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 26/53] 37.139.178.138 () {46 vars in 804 bytes} [Sun Feb 19 18:51:56 2017] GET /favicon.ico => generated 53922 bytes in 77 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 23/54] 37.139.178.138 () {44 vars in 845 bytes} [Sun Feb 19 18:52:00 2017] GET /belt/ => generated 12791 bytes in 16 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 27/55] 37.139.178.138 () {42 vars in 750 bytes} [Sun Feb 19 18:52:01 2017] GET /favicon.ico => generated 53464 bytes in 70 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 24/56] 37.139.178.138 () {44 vars in 834 bytes} [Sun Feb 19 18:52:03 2017] GET / => generated 4823 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4420|app: 0|req: 5/57] 37.139.178.138 () {42 vars in 745 bytes} [Sun Feb 19 18:52:03 2017] GET /favicon.ico => generated 53449 bytes in 54 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 28/58] 37.139.178.138 () {42 vars in 679 bytes} [Sun Feb 19 18:52:16 2017] GET / => generated 4823 bytes in 4 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 25/59] 37.139.178.138 () {40 vars in 666 bytes} [Sun Feb 19 18:52:16 2017] GET /favicon.ico => generated 52571 bytes in 72 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 29/60] 37.139.178.138 () {44 vars in 729 bytes} [Sun Feb 19 18:52:19 2017] GET /order/ => generated 9236 bytes in 5 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 4420|app: 0|req: 6/61] 37.139.178.138 () {42 vars in 672 bytes} [Sun Feb 19 18:52:19 2017] GET /order/validator.min.js => generated 52807 bytes in 89 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 30/62] 37.139.178.138 () {44 vars in 735 bytes} [Sun Feb 19 18:52:19 2017] GET /order/ => generated 9236 bytes in 5 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 26/63] 37.139.178.138 () {42 vars in 672 bytes} [Sun Feb 19 18:52:19 2017] GET /order/validator.min.js => generated 52807 bytes in 73 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 31/64] 37.139.178.138 () {44 vars in 733 bytes} [Sun Feb 19 18:52:21 2017] GET /belt/ => generated 12791 bytes in 14 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 27/65] 37.139.178.138 () {44 vars in 744 bytes} [Sun Feb 19 18:52:22 2017] GET /item/belt2/ => generated 10472 bytes in 11 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 32/66] 37.139.178.138 () {44 vars in 1064 bytes} [Sun Feb 19 18:52:24 2017] GET /order/ => generated 9236 bytes in 4 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 4420|app: 0|req: 7/67] 37.139.178.138 () {42 vars in 996 bytes} [Sun Feb 19 18:52:24 2017] GET /order/validator.min.js => generated 54912 bytes in 85 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py:1474: RuntimeWarning: DateTimeField Zakaz2.date received a naive datetime (2017-02-19 18:52:30.556621) while time zone support is active.
+  RuntimeWarning)
+
+/usr/local/lib/python2.7/dist-packages/django/db/backends/mysql/base.py:124: Warning: (1366L, u"Incorrect string value: '\\xD0\\x93\\xD1\\x80\\xD0\\xBD...' for column 'zakaz' at row 1")
+  return self.cursor.execute(query, args)
+
+[pid: 4421|app: 0|req: 33/68] 37.139.178.138 () {48 vars in 1148 bytes} [Sun Feb 19 18:52:30 2017] POST /user/ => generated 0 bytes in 1467 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 28/69] 37.139.178.138 () {44 vars in 1073 bytes} [Sun Feb 19 18:52:32 2017] GET /order/thanks/ => generated 3741 bytes in 5 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4420|app: 0|req: 8/70] 37.139.178.138 () {44 vars in 834 bytes} [Sun Feb 19 18:54:42 2017] GET / => generated 4823 bytes in 15 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 34/71] 37.139.178.138 () {42 vars in 745 bytes} [Sun Feb 19 18:54:43 2017] GET /favicon.ico => generated 53449 bytes in 61 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 4419|app: 0|req: 29/72] 37.139.178.138 () {44 vars in 856 bytes} [Sun Feb 19 18:54:46 2017] GET /item/belt2/ => generated 10472 bytes in 16 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4421|app: 0|req: 35/73] 37.139.178.138 () {42 vars in 756 bytes} [Sun Feb 19 18:54:47 2017] GET /favicon.ico => generated 53482 bytes in 87 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)

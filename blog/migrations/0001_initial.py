@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 from django.conf import settings
+import blog.models
 
 
 class Migration(migrations.Migration):
@@ -64,10 +65,12 @@ class Migration(migrations.Migration):
             name='Zakaz2',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=255, verbose_name=b'name')),
+                ('name', models.CharField(max_length=120, verbose_name=b'name', validators=[blog.models.validate_even])),
                 ('zakaz', models.CharField(max_length=255, verbose_name=b'What ordered')),
                 ('summa', models.IntegerField(default=0, verbose_name=b'Sum')),
+                ('date', models.DateTimeField(verbose_name=b'Date')),
                 ('delivery', models.CharField(max_length=255, verbose_name=b'delivery')),
+                ('number', models.IntegerField(default=0, verbose_name=b'Number', validators=[blog.models.validate_even])),
             ],
             options={
                 'verbose_name': 'Order',

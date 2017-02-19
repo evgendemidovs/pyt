@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import *
 from django import forms
-from localflavor.fr.forms import FRPhoneNumberField
 from django.forms import CharField
 from django.core import validators
 from django.core.exceptions import ValidationError
