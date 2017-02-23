@@ -28,14 +28,14 @@ def belt(request):
 
     return render(request, 'blog/belt.html',context)
 
-def homes(request):
-    category = Category.objects.all()
+def purse(request):
+    tovars = Item.objects.all()
     context = {
         'title': 'Helloworld',
         'tovars': tovars,
 }
 
-    return render(request, 'blog/homes.html',context)
+    return render(request, 'blog/purse.html',context)
 
 def item(request, alias):
     try:
