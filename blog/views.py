@@ -17,10 +17,7 @@ def about(request):
     return render(request, 'blog/about.html')
 def contact(request):
     return render(request, 'blog/contact.html')
-<<<<<<< HEAD
-=======
 
->>>>>>> e291ded973043af9976a36dc0e9acafebc994d01
 def belt(request):
     tovars = Item.objects.all()
     context = {
@@ -30,15 +27,14 @@ def belt(request):
 
     return render(request, 'blog/belt.html',context)
 
-def purse(request):
-    tovars = Item.objects.all()
+def homes(request):
+    category = Category.objects.all()
     context = {
         'title': 'Helloworld',
         'tovars': tovars,
 }
 
-    return render(request, 'blog/purse.html',context)
-
+    return render(request, 'blog/homes.html',context)
 def item(request, alias):
     try:
         tovar = Item.objects.get(alias=alias)
