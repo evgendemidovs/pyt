@@ -17,6 +17,10 @@ def about(request):
     return render(request, 'blog/about.html')
 def contact(request):
     return render(request, 'blog/contact.html')
+<<<<<<< HEAD
+=======
+
+>>>>>>> e291ded973043af9976a36dc0e9acafebc994d01
 def belt(request):
     tovars = Item.objects.all()
     context = {

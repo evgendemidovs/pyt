@@ -3,7 +3,6 @@ from django.contrib import admin
 
 urlpatterns = [
     # Examples:
-     url(r'^purse/$', 'blog.views.purse', name='purse'),
      url(r'^order/thanks/$', 'blog.views.orderthanks', name='order'),
      url(r'^user/$', 'blog.views.user', name='user'),
      url(r'^video/$', 'blog.views.video', name='video'),
